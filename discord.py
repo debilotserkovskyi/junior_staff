@@ -40,12 +40,12 @@ soup_discord = BeautifulSoup(response, 'html.parser')
 
 all_links = []
 discord_links = []
-for link in links:
-    for link in soup_discord.find_all('a'):
-        all_links.append(link.get('href'))
-        for line in all_links:
-            if 'https://discord.com' in str(line):
-                discord_links.append(line)
+
+for link in soup_discord.find_all('a'):
+    all_links.append(link.get('href'))
+    for line in all_links:
+        if 'https://discord.com' in str(line):
+            discord_links.append(line)
 
 print(set(discord_links))
 
