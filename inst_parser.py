@@ -4,20 +4,21 @@ from selenium.webdriver.common.by import By
 import re
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
-import time
+from instascrape import *
+import datetime
+
 
 link = 'https://www.instagram.com/accounts/login/'
 login_url = 'https://www.instagram.com/accounts/login/ajax/'
 url = 'https://www.instagram.com/'
 
 
-fire_path = '/Users/maksimbelocerkovskij/dev_elo_pme_nt/geckodriver'
-driver = webdriver.Firefox(executable_path=fire_path)
-driver.get(url)
+# fire_path = '/Users/maksimbelocerkovskij/dev_elo_pme_nt/geckodriver'
+# driver = webdriver.Firefox(executable_path=fire_path)
+# driver.get(url)
 
 
-time_ = int(datetime.now().timestamp())
+time_ = int(datetime.datetime.now().timestamp())
 
 payload = {
     'username': 'test.cmon.nomc',
@@ -39,7 +40,7 @@ with requests.Session() as s:
     print(r.status_code)
 
 
-hashtags = ["#cooking", "#ny"]
+hashtags = ["cooking", "ny"]
 
 response = requests.get(url).text
 bs = BeautifulSoup(response, 'html.parser')
@@ -47,20 +48,44 @@ profile_name = []
 bio = []
 num_posts = []
 
+hashtag = Hashtag(f"https://www.instagram.com/explore/tags/cooking/")
+hashtag.scrape(headers={
+    "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
+    "X-Requested-With": "XMLHttpRequest",
+    "Referer": "https://www.instagram.com/accounts/login/",
+    "x-csrftoken": csrf
+})
+post = hashtag.get_recent_posts()
+
+for i in post:
+    i.to_csv(fp='new.csv')
+
+print(post[0].scrape(mapping={
+    ""
+}))
+
+
+#
+# for i in range(len(post)):
+#     post[i].to_json(fp=f'scrapped_posts{i}.txt')
+#     with open("scrapped_posts.txt", "a") as scr:
+#         scr.write(post[i].scrape())
+
+
 driver.\
     find_element(by=By.XPATH,
                  value='/html/body/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[1]/div/label/input')\
     .send_keys(payload['username'], Keys.TAB, payload['pass'], Keys.ENTER)
 time.sleep(2)
-
-
-for i in hashtags:
-    driver.refresh()
-    driver.find_element(by=By.XPATH,
-                        value="/html/body/div[1]/section/nav/div[2]/div/div/div[2]/input").send_keys(i, Keys.ENTER)
-
-time.sleep(10)
-driver.quit()
+#
+#
+# for i in hashtags:
+#     driver.refresh()
+#     driver.find_element(by=By.XPATH,
+#                         value="/html/body/div[1]/section/nav/div[2]/div/div/div[2]/input").send_keys(i, Keys.ENTER)
+#
+# time.sleep(10)
+# driver.quit()
 
 
 
