@@ -1,2 +1,2 @@
 # junior_staff
-some my works as junior
+some of my works as junior
