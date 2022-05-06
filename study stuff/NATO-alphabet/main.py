@@ -1,24 +1,5 @@
-from pprint import pprint
-
 import pandas
 
-student_dict = {
-    "student": ["Angela", "James", "Lily"], 
-    "score": [56, 76, 98]
-}
-
-#Looping through dictionaries:
-for (key, value) in student_dict.items():
-    # print(key, value)
-    pass
-
-student_data_frame = pandas.DataFrame(student_dict)
-
-#Loop through rows of a data frame
-for (index, row) in student_data_frame.iterrows():
-    # Access index and row
-    #Access row.student or row.score
-    pass
 
 
 # TODO 1. Create a dictionary in this format:
