@@ -8,12 +8,17 @@ score_c = 0
 def game():
     global user_choise, score_u, score_c
     comp_choise = random.choice([1, 2, 3])
+    emo_c = ''
     if comp_choise == 1:
         comp_choise = 'paper'
+        emo_c = '✋'
     elif comp_choise == 2:
         comp_choise = 'rock'
+        emo_c = '🤜'
     else:
         comp_choise = 'scissors'
+        emo_c = '✌️'
+        
     if user_choise == comp_choise:
         print('you have chose the same ')
     elif user_choise == 'paper' and comp_choise == 'rock':
@@ -29,25 +34,37 @@ def game():
     elif user_choise == 'rock' and comp_choise == 'scissors':
         score_u += 1
     print(user_choise, comp_choise)
-    score_comp.update()
-    score_user.update()
+    print(score_c, score_u)
+    score_comp.config(text=score_c)
+    score_user.config(text=score_u)
+    emo = ''
+    if user_choise == 'paper':
+        emo = '✋'
+    elif user_choise == 'rock':
+        emo = '🤜'
+    elif user_choise == 'scissors':
+        emo = '✌️'
+    drop.config(text=f'u drop {emo}\ncomp drop {emo_c}')
     
     
 def rock():
-    global user_choise
+    global user_choise, rock_emo
     user_choise = 'rock'
+    rock_emo = '🤜'
     game()
 
 
 def paper():
     global user_choise
     user_choise = 'paper'
+    paper_emo = '✋️️'
     game()
 
 
 def scissors():
     global user_choise
     user_choise = 'scissors'
+    scissors_emo = '✌️'
     game()
 
 
@@ -63,7 +80,7 @@ rock_b = Button(text='rock', command=rock)
 rock_b.pack()
 
 paper_b = Button(text='paper', command=paper)
-paper_b.pack(after=rock_b)
+paper_b.pack()
 
 scissors_b = Button(text='scissors', command=scissors)
 scissors_b.pack()
@@ -73,5 +90,7 @@ score_user.pack()
 score_comp = Label(text=score_c)
 score_comp.pack()
 
+drop = Label()
+drop.pack()
 
 window.mainloop()
