@@ -1,29 +1,54 @@
 from tkinter import *
 import random
 
+score_u = 0
+score_c = 0
+
+
 def game():
-    comp_choise = random.choice([1,2,3])
+    global user_choise, score_u, score_c
+    comp_choise = random.choice([1, 2, 3])
     if comp_choise == 1:
         comp_choise = 'paper'
     elif comp_choise == 2:
         comp_choise = 'rock'
     else:
         comp_choise = 'scissors'
-    user_choise = 'paper'
     if user_choise == comp_choise:
         print('you have chose the same ')
     elif user_choise == 'paper' and comp_choise == 'rock':
-        print('user win')
+        score_u += 1
     elif user_choise == 'paper' and comp_choise == 'scissors':
-        print('com win')
+        score_c += 1
     elif user_choise == 'scissors' and comp_choise == 'rock':
-        print('you lose')
+        score_c += 1
     elif user_choise == 'scissors' and comp_choise == 'paper':
-        print('you win')
+        score_u += 1
     elif user_choise == 'rock' and comp_choise == 'paper':
-        print('you lose')
+        score_c += 1
     elif user_choise == 'rock' and comp_choise == 'scissors':
-        print('you win')
+        score_u += 1
+    print(user_choise, comp_choise)
+    score_comp.update()
+    score_user.update()
+    
+    
+def rock():
+    global user_choise
+    user_choise = 'rock'
+    game()
+
+
+def paper():
+    global user_choise
+    user_choise = 'paper'
+    game()
+
+
+def scissors():
+    global user_choise
+    user_choise = 'scissors'
+    game()
 
 
 window = Tk()
@@ -32,15 +57,21 @@ window.config(padx=20, pady=20, bg="#f7f5dd")
 
 canvas = Canvas(width=500, height=600, bg="#f7f5dd", highlightthickness=0)
 
-Label(text='chose what you want to drop')
+Label(text='chose what you want to drop').pack()
 
-rock_b = Button(text='rock', command='rock')
-rock_b.grid(column=0, row=1)
+rock_b = Button(text='rock', command=rock)
+rock_b.pack()
 
-paper_b = Button(text='paper', command='paper')
-paper_b.grid(column=1, row=1)
+paper_b = Button(text='paper', command=paper)
+paper_b.pack(after=rock_b)
 
-scissors_b = Button(text='scissors', command='scissors')
-scissors_b.grid(column=2, row=1)
+scissors_b = Button(text='scissors', command=scissors)
+scissors_b.pack()
+
+score_user = Label(text=score_u)
+score_user.pack()
+score_comp = Label(text=score_c)
+score_comp.pack()
+
 
 window.mainloop()
