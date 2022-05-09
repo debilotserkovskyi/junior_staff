@@ -48,23 +48,20 @@ def game():
     
     
 def rock():
-    global user_choise, rock_emo
+    global user_choise
     user_choise = 'rock'
-    rock_emo = '🤜'
     game()
 
 
 def paper():
     global user_choise
     user_choise = 'paper'
-    paper_emo = '✋️️'
     game()
 
 
 def scissors():
     global user_choise
     user_choise = 'scissors'
-    scissors_emo = '✌️'
     game()
 
 
