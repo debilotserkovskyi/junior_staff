@@ -1,0 +1,1 @@
+The rock paper scissors is a game played between two players that have few sets of rules.
