@@ -3,6 +3,7 @@ import random
 
 score_u = 0
 score_c = 0
+yellow = "#f7f5dd"
 
 
 def game():
@@ -35,8 +36,8 @@ def game():
         score_u += 1
     print(user_choise, comp_choise)
     print(score_c, score_u)
-    score_comp.config(text=score_c)
-    score_user.config(text=score_u)
+    score_comp.config(text=f'comp: {score_c}')
+    score_user.config(text=f'user: {score_u}')
     emo = ''
     if user_choise == 'paper':
         emo = '✋'
@@ -71,23 +72,24 @@ window.config(padx=20, pady=20, bg="#f7f5dd")
 
 canvas = Canvas(width=500, height=600, bg="#f7f5dd", highlightthickness=0)
 
-Label(text='chose what you want to drop').pack()
+Label(text='chose what you want to drop', bg=yellow).grid(columnspan=3, row=0)
 
 rock_b = Button(text='rock', command=rock)
-rock_b.pack()
+rock_b.grid(column=0, row=1)
 
 paper_b = Button(text='paper', command=paper)
-paper_b.pack()
+paper_b.grid(column=1, row=1)
 
 scissors_b = Button(text='scissors', command=scissors)
-scissors_b.pack()
+scissors_b.grid(column=2, row=1)
 
-score_user = Label(text=score_u)
-score_user.pack()
-score_comp = Label(text=score_c)
-score_comp.pack()
+Label(text='SCORE:', bg=yellow).grid(columnspan=3, row=3)
+score_user = Label(text=f'user: {score_u}', bg=yellow)
+score_user.grid(column=0, row=4)
+score_comp = Label(text=f'comp: {score_c}', bg=yellow)
+score_comp.grid(column=2, row=4)
 
-drop = Label()
-drop.pack()
+drop = Label(bg=yellow)
+drop.grid(columnspan=3, row=5)
 
 window.mainloop()
