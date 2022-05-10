@@ -9,7 +9,6 @@ yellow = "#f7f5dd"
 def game():
     global user_choise, score_u, score_c
     comp_choise = random.choice([1, 2, 3])
-    emo_c = ''
     if comp_choise == 1:
         comp_choise = 'paper'
         emo_c = '✋'
@@ -21,7 +20,8 @@ def game():
         emo_c = '✌️'
         
     if user_choise == comp_choise:
-        print('you have chose the same ')
+        # same.config(text='you droped the same', bg=yellow)
+        pass
     elif user_choise == 'paper' and comp_choise == 'rock':
         score_u += 1
     elif user_choise == 'paper' and comp_choise == 'scissors':
@@ -91,5 +91,8 @@ score_comp.grid(column=2, row=4)
 
 drop = Label(bg=yellow)
 drop.grid(columnspan=3, row=5)
+
+same = Label(bg=yellow)
+same.grid(columnspan=3, row=6)
 
 window.mainloop()
