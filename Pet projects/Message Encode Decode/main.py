@@ -10,6 +10,7 @@ def raise_frame(frame):
     frame.tkraise()
 
 
+# f2
 def encode_b64():
     message = message_entry.get()
     key = 'ascii'
@@ -28,6 +29,23 @@ def decode_b64():
     root.clipboard_append(str(base64.b64decode(message.encode(key)).decode(key)))
 
 
+# f3
+def roman_shift():
+    new_list = []
+    code = ''
+    shift: int = int(shift_number.get())
+    txt = roman_txt.get()
+    if shift == str:
+        Label(f3, text='it must be a number').grid(column=5, row=5)
+        raise_frame(f3)
+    for i in txt:
+        if i not in ' ':
+            new_list.append(chr(ord(i) + shift))
+        else:
+            new_list.append(' ')
+    code.join(new_list)
+    
+        
 # main
 root = Tk()
 root.geometry('500x300')
@@ -57,7 +75,15 @@ Button(f2, text='decode', command=decode_b64).grid(column=0, row=2)
 Button(f2, text='encode', command=encode_b64).grid(column=2, row=2)
 
 # f3, based on shift (roman decode)
-Label(f3, text='type the shift number')
+Label(f3, text='put txt here:').grid(columnspan=3, row=0)
+roman_txt = Entry(f3)
+roman_txt.grid(columnspan=3,row=1)
+
+Label(f3, text='type the shift number').grid(columnspan=3,row=2)
+
+shift_number = Entry(f3)
+shift_number.grid(columnspan=3,row=3)
+
 
 
 raise_frame(f1)
