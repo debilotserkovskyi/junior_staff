@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 
-with open('path to .html file') as fp:
+url = 'file:///Users/maksimbelocerkovskij/Downloads/DAO%20Discords/Priority.html'
+
+with open('/Users/maksimbelocerkovskij/Downloads/DAO Discords/Priority.html') as fp:
     soup = BeautifulSoup(fp, 'html.parser')
 links = []
 for link in soup.find_all('a'):

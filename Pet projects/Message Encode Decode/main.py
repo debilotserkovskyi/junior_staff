@@ -16,7 +16,13 @@ def encode(key, message):
 
 
 def decode(key, message):
-    pass
+    dec = []
+    
+    for i in range(len(message)):
+        key_c = key[i % len(key)]
+        dec.append(chr((ord(message[i] - ord(key_c))) % 256))
+    return ''.join(dec)
+
 
 
 window.mainloop()
