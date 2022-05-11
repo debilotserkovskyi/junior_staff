@@ -2,14 +2,6 @@ from tkinter import *
 import base64
 
 
-for frame in (f1, f2):
-    frame.grid(row=0, column=0, sticky='news')
-
-
-def raise_frame(frame):
-    frame.tkraise()
-
-
 # f2
 def encode_b64():
     message = message_entry.get()
@@ -58,6 +50,14 @@ f2 = Frame(root)
 # roman shift frame
 f3 = Frame(root)
 
+for frame in (f1, f2):
+    frame.grid(row=0, column=0, sticky='news')
+
+
+def raise_frame(frame):
+    frame.tkraise()
+
+
 # start screen
 Label(f1, text='to decode or encode txt based on ascii').grid(columnspan=4, row=0)
 Button(f1, text='go', command=lambda: raise_frame(f2)).grid(columnspan=3, row=1)
@@ -77,13 +77,12 @@ Button(f2, text='encode', command=encode_b64).grid(column=2, row=2)
 # f3, based on shift (roman decode)
 Label(f3, text='put txt here:').grid(columnspan=3, row=0)
 roman_txt = Entry(f3)
-roman_txt.grid(columnspan=3,row=1)
+roman_txt.grid(columnspan=3, row=1)
 
-Label(f3, text='type the shift number').grid(columnspan=3,row=2)
+Label(f3, text='type the shift number').grid(columnspan=3, row=2)
 
 shift_number = Entry(f3)
-shift_number.grid(columnspan=3,row=3)
-
+shift_number.grid(columnspan=3, row=3)
 
 
 raise_frame(f1)
