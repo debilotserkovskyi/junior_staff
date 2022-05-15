@@ -36,6 +36,7 @@ def roman_shift():
         else:
             new_list.append(' ')
     code.join(new_list)
+    Label(f3, text=code).grid(columnspan=4, row=5)
     
         
 # main
@@ -50,7 +51,7 @@ f2 = Frame(root)
 # roman shift frame
 f3 = Frame(root)
 
-for frame in (f1, f2):
+for frame in (f1, f2, f3):
     frame.grid(row=0, column=0, sticky='news')
 
 
@@ -83,6 +84,7 @@ Label(f3, text='type the shift number').grid(columnspan=3, row=2)
 
 shift_number = Entry(f3)
 shift_number.grid(columnspan=3, row=3)
+Button(f3, text='encode', command=roman_shift).grid(column=2, row=4)
 
 
 raise_frame(f1)
