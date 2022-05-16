@@ -28,20 +28,22 @@ def roman_shift():
     shift: int = int(shift_number.get())
     txt = roman_txt.get()
     if shift == str:
-        Label(f3, text='it must be a number').grid(column=5, row=5)
+        Label(f3, text='it must be a number').grid(column=5, row=6)
         raise_frame(f3)
     for i in txt:
-        if i not in ' ':
-            new_list.append(chr(ord(i) + shift))
-        else:
+        if i == ' ':
             new_list.append(' ')
-    code.join(new_list)
-    Label(f3, text=code).grid(columnspan=4, row=5)
+        else:
+            new_list.append(chr(ord(i) + shift))
+    out = Label(text=''.join(new_list))
+    out.grid(columnspan=4, row=7)
+    root.clipboard_clear()
+    root.clipboard_append(''.join(new_list))
     
         
 # main
 root = Tk()
-root.geometry('500x300')
+# root.geometry('500x300')
 root.title('Message Encode and Decode')
 
 # main frame
@@ -75,6 +77,8 @@ message_entry.grid(columnspan=3, row=1)
 Button(f2, text='decode', command=decode_b64).grid(column=0, row=2)
 Button(f2, text='encode', command=encode_b64).grid(column=2, row=2)
 
+Button(f2, text='back', command=lambda: raise_frame(f1)).grid(column=2, row=3)
+
 # f3, based on shift (roman decode)
 Label(f3, text='put txt here:').grid(columnspan=3, row=0)
 roman_txt = Entry(f3)
@@ -84,7 +88,9 @@ Label(f3, text='type the shift number').grid(columnspan=3, row=2)
 
 shift_number = Entry(f3)
 shift_number.grid(columnspan=3, row=3)
-Button(f3, text='encode', command=roman_shift).grid(column=2, row=4)
+Button(f3, text='get txt', command=roman_shift).grid(column=2, row=4)
+
+Button(f3, text='back', command=lambda: raise_frame(f1)).grid(column=2, row=5)
 
 
 raise_frame(f1)
