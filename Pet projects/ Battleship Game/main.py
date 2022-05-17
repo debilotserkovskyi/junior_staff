@@ -7,6 +7,13 @@ def play_field():
         print(' '.join(sea[row]))
         
     
+ships = {
+    "Carrier": 5,
+    "Battleship": 4,
+    "Cruiser": 3,
+    "Submarine": 3,
+    "Destroyer": 2
+}
 # TODO 1 Make multiple battleships:
 #  You will need to be careful because you need to make sure that you do not place battleships on top of each
 #  other on the game board.
