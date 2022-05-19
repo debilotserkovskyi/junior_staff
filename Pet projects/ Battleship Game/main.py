@@ -14,6 +14,19 @@ ships = {
     "Submarine": 3,
     "Destroyer": 2
 }
+
+
+def sea():
+    # row1 = [' ', [i for i in range(1, 11)]]
+    for i in range(1, 11):
+        i = ['{}'.format(i), ["O"for _ in range(10)]]
+        print(i)
+    # row2 = ['A', ['O' for _ in range(10)]]
+
+    
+    
+    print(row1,'\n', row2, '\n')
+sea()
 # TODO 1 Make multiple battleships:
 #  You will need to be careful because you need to make sure that you do not place battleships on top of each
 #  other on the game board.
@@ -27,4 +40,4 @@ ships = {
 # TODO 3 Make your game a two-player game:
 #  Use functions to allow your game to have more features like rematches, statistics and more!
 
-play_field()
+# play_field()
