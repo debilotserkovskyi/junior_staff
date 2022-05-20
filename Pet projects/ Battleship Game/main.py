@@ -22,10 +22,34 @@ def set_ships():
     global board
     row = 2
     # column = input('')
-    ship = input()
-    for i in range(len(board[row][1])):
-        if ship == 'c' and i < ships['Carrier']:
-            board[row][1][i] = '1'
-        # print(board[row])
+    place = input().lower().split()
+    print(place)
+    
+    if place[0] == 'r':
+        if place[1] in 'ABCDEFGHIJ'.lower():
+            
+            for i in board:
+                if place[1].upper() in i:
+                    row = board.index(i)
+                    
+            for i in range(len(board[row][1])):
+                if place[2] == 'c' and i < ships['Carrier']:
+                    board[row][1][i] = '1'
+                elif place[2] == 'b' and i < ships['Battleship']:
+                    board[row][1][i] = '1'
+                elif place[2] == 'cr' and i < ships['Cruiser']:
+                    board[row][1][i] = '1'
+                elif place[2] == 's' and i < ships['Submarine']:
+                    board[row][1][i] = '1'
+                elif place[2] == 'd' and i < ships['Destroyer']:
+                    board[row][1][i] = '1'
+
+    elif place[0] == 'cl':
+        if place[1] in '123456789' or place[1] == '10':
+            pass
     pprint(board)
-sea()
+    
+    
+if __name__ == '__main__':
+    sea()
+    
