@@ -1,4 +1,4 @@
-# Battleship game 
+# Battleship game (ongoing)
 
 
 ## TODO
