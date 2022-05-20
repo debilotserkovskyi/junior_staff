@@ -22,26 +22,19 @@ def set_ships():
     global board
     row = 2
     # column = input('')
-    place = input().lower().split()
+    print(f'write where you want to place a ship in format (column or row) (letter or number) (ship name)\n{ships}')
+    place = input().title().split()
     print(place)
     
-    if place[0] == 'r':
-        if place[1] in 'ABCDEFGHIJ'.lower():
+    if place[0] == 'R':
+        if place[1] in 'ABCDEFGHIJ':
             
             for i in board:
                 if place[1].upper() in i:
                     row = board.index(i)
                     
             for i in range(len(board[row][1])):
-                if place[2] == 'c' and i < ships['Carrier']:
-                    board[row][1][i] = '1'
-                elif place[2] == 'b' and i < ships['Battleship']:
-                    board[row][1][i] = '1'
-                elif place[2] == 'cr' and i < ships['Cruiser']:
-                    board[row][1][i] = '1'
-                elif place[2] == 's' and i < ships['Submarine']:
-                    board[row][1][i] = '1'
-                elif place[2] == 'd' and i < ships['Destroyer']:
+                if place[2] in ships and i < ships[place[2]]:
                     board[row][1][i] = '1'
 
     elif place[0] == 'cl':
