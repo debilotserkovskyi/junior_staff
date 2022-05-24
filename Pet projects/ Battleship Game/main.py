@@ -25,15 +25,17 @@ def sea():
         board.append(i)
     
     while len(store_list) <= 15:
-        print(f'write where you want to place a ship in format (column or row) (letter or number) (number or letter) '
-              f'(ship name)\n{ships}')
+        print(f'write where you want to place a ship in format (column or row) (letter or number) (number or letter)'
+              f' (ship name)\n{ships}')
         
         place = input().title().split()
         print(place)
         
         store_list += 1
         if place[3] in store:
-            pass
+            store[place[3]] += 1
+            if store['Destroyer'] > 5:
+                print('there coulb be only one')
     
         # place ship for row
         if place[0] == 'R':
