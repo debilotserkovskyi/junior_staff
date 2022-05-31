@@ -18,25 +18,38 @@ def sea():
         "Submarine": 0,
         "Destroyer": 0
     }
-    store_list = []
+    store_list = 0
     board = [[' ', [str(i) for i in range(1, 11)]]]
     for i in range(10):
         i = [chr(ord('A') + i), ["O" for _ in range(10)]]
         board.append(i)
     
-    while len(store_list) <= 15:
+    while store_list <= 15:
         print(f'write where you want to place a ship in format (column or row) (letter or number) (number or letter)'
               f' (ship name)\n{ships}')
         
         place = input().title().split()
         print(place)
-        
         store_list += 1
+        
         if place[3] in store:
             store[place[3]] += 1
             if store['Destroyer'] > 5:
-                print('there coulb be only one')
-    
+                print('there could be only five')
+                store[place[3]] = 5
+            elif store['Submarine'] > 4:
+                print('there could be only four')
+                store[place[3]] = 4
+            elif store['Submarine'] > 3:
+                print('there could be only three')
+                store[place[3]] = 3
+            elif store['Submarine'] > 2:
+                print('there could be only two')
+                store[place[3]] = 2
+            elif store['Submarine'] > 1:
+                print('there could be only four')
+                store[place[3]] = 1
+                
         # place ship for row
         if place[0] == 'R':
             if place[1] in 'ABCDEFGHIJ' and (place[2] in '123456789' or place[2] == '10'):
