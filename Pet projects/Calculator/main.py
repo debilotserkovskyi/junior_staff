@@ -10,7 +10,7 @@ buttons = [
     '7', '8', '9', 'x',
     '4', '5', '6', '-',
     '1', '2', '3', '+',
-    "0", ",", "="
+    "0", ",", "=", '(', ')'
 ]
 
 row = 1
@@ -30,16 +30,17 @@ for i in buttons:
 
 def click_event(key):
     num = []
+    equation = display.get()
     if key == "AC":
         display.delete(0, END)
     elif key == "=":
-        for i in display.get().split('+'):
-            display.delete(0, END)
-            i = int(i)
-            num.append(i)
-        print(sum(num))
+        for j in equation:
+            # TODO need to read all str and check it
+            #  if there is a "+" symbol >> do sum and replace it in str and etc
+            if '+' in equation:
+                print(sum([int(equation[equation.index('+')-1]), int(equation[equation.index('+')+1])]))
     else:
-        display.insert(0, key)
+        display.insert(END, key)
     
 
 root.mainloop()
