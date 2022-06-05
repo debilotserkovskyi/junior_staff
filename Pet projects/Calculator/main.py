@@ -17,7 +17,7 @@ row = 1
 col = 0
 
 display = Entry()
-display.grid(row=0, columnspan=3, sticky=N+E+W+S)
+display.grid(row=0, columnspan=5, sticky=N+E+W+S)
 
 for i in buttons:
     action = lambda x = i: click_event(x)
@@ -29,7 +29,17 @@ for i in buttons:
 
 
 def click_event(key):
-    pass
-
+    num = []
+    if key == "AC":
+        display.delete(0, END)
+    elif key == "=":
+        for i in display.get().split('+'):
+            display.delete(0, END)
+            i = int(i)
+            num.append(i)
+        print(sum(num))
+    else:
+        display.insert(0, key)
+    
 
 root.mainloop()
