@@ -6,11 +6,11 @@ root.title('Calc')
 
 
 buttons = [
-    'AC', '+/-', '%', '/',
-    '7', '8', '9', 'x',
+    'AC', '(', ')', '/',
+    '7', '8', '9', '*',
     '4', '5', '6', '-',
     '1', '2', '3', '+',
-    "0", ",", "=", '(', ')'
+    "0", ",", "=",
 ]
 
 row = 1
@@ -29,16 +29,12 @@ for i in buttons:
 
 
 def click_event(key):
-    num = []
     equation = display.get()
     if key == "AC":
         display.delete(0, END)
     elif key == "=":
-        for j in equation:
-            # TODO need to read all str and check it
-            #  if there is a "+" symbol >> do sum and replace it in str and etc
-            if '+' in equation:
-                print(sum([int(equation[equation.index('+')-1]), int(equation[equation.index('+')+1])]))
+        display.delete(0, END)
+        display.insert(0, eval(equation))
     else:
         display.insert(END, key)
     
