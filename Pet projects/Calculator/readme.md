@@ -1,1 +1,1 @@
-# Simple calculator with Tkinter (ongoing)
+# Simple calculator with Tkinter (done?)
