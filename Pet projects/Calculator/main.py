@@ -1,17 +1,14 @@
 from tkinter import *
-from math import factorial
 
 root = Tk()
 root.title('Calc')
-
 
 buttons = [
     'AC', '(', ')', '/',
     '7', '8', '9', '*',
     '4', '5', '6', '-',
     '1', '2', '3', '+',
-    "0", ",", "=",
-]
+    "0", ",", "=", ]
 
 row = 1
 col = 0
