@@ -84,6 +84,13 @@ def sea():
         pprint(board)
         print(store)
         
+        
+    # def play():
+#         if guessed >> edit x to 1
+#         if not >> x
+#         think how to make a gui
+#
+        
             
 if __name__ == '__main__':
     sea()
