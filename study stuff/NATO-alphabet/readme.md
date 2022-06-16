@@ -1,3 +1,3 @@
-# studied app
+## simples NATO phonetic TransCrypt 
 
-code is going through the code and return each word to the NATO phonetic alphabet
+cause I'm always need to pron my email and name via phonetic alphabet
