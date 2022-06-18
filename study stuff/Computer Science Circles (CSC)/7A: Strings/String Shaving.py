@@ -1,3 +1,2 @@
-str = input()
-print(str[1:len(str)-1])
-
+txt = input()
+print(str[1:len(txt)-1])
