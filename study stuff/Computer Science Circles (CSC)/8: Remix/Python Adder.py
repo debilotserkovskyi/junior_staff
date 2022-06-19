@@ -1,4 +1,4 @@
-S = '731+2212'
+S = input()
 
 # print(eval(S))
 

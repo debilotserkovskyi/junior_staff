@@ -4,8 +4,20 @@ while True:
     txt = input()
     if txt == 'END':
         break
-    if len(txt) % 2 != 0:
-        print(('.'*(width//2 - len(txt)//2)) + txt + ('.' * (width//2 - len(txt)//2)))
-    elif len(txt) % 2 == 0:
-        print(('.' * (width//2 + 1 - len(txt)//2)) + txt + ('.' * (width//2 - len(txt)//2)))
-
+    dots = '.' * width
+    L = len(txt)
+    left = ''
+    
+    if width % 2 != 0:
+        if L % 2 == 0:
+            left = '.' * ((width-L)//2 + width % 2) + txt[:len(txt)//2]
+        else:
+            left = '.' * ((width-L)//2) + txt[:len(txt)//2]
+    else:
+        if L % 2 == 0:
+            left = '.' * ((width - L) // 2 + width % 2) + txt[:len(txt) // 2]
+        else:
+            left = '.' * ((width-L)//2 + 1) + txt[:len(txt)//2]
+    right = txt[len(txt)//2:] + '.' * ((width-L)//2)
+    print(left+right)
+    
