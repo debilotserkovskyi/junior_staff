@@ -29,20 +29,25 @@ def decoder(txt: str, s: int):
 
 
 def try_to_decode(message):
-    shift = 0
-    chance_store = [store[i] for i in message]
-    while shift != 18:
-        word_chance_sum = 0
-        message = decoder(message, shift)
-        shift += 1
+    word_chance_before, word_chance_after = 0, 0
+    stores = []
+    for _ in range(2):
+        word_chance_before, word_chance_after = 0, 0
+        word_chance_after = 0
         for index, char in enumerate(message):
-            word_chance_sum += store[char]
-            chance_store.append(store[char])
-    print(word_chance_sum, sum(chance_store))
-    print(message, shift)
-
-
+            word_chance_before += store[char]
+        stores.append(word_chance_before)
+        # print(message, shift, word_chance_before)
+        message = decoder(message, 9)
+        print(stores)
+        for index, char in enumerate(message):
+            word_chance_after += store[char]
+        # print(message, 1, '\n', word_chance_before, "\n", word_chance_after)
+    print(stores.index(max(stores)))
+    return message
+    
+    
 # run the program
 if __name__ == '__main__':
-    print(try_to_decode('JRRG'))
+    print(try_to_decode('KVEXIJYP'))
     
