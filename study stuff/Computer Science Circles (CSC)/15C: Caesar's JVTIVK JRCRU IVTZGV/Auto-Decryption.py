@@ -31,14 +31,14 @@ def decoder(txt: str, s: int):
 def try_to_decode(message):
     word_chance_before, word_chance_after = 0, 0
     stores = []
-    for _ in range(2):
+    for _ in range(3):
         word_chance_before, word_chance_after = 0, 0
         word_chance_after = 0
         for index, char in enumerate(message):
             word_chance_before += store[char]
         stores.append(word_chance_before)
         # print(message, shift, word_chance_before)
-        message = decoder(message, 9)
+        message = decoder(message, 1)
         print(stores)
         for index, char in enumerate(message):
             word_chance_after += store[char]
