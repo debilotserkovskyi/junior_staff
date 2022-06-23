@@ -76,7 +76,4 @@ def final_calc(words: list) -> float:
 
 
 if __name__ == '__main__':
-    print(main('JAZZ'))
-    print(values)
-    print(words_list)
-    
+    print(main(input()))
