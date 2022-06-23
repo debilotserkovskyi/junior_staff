@@ -16,7 +16,7 @@ for i, j in enumerate(letterGoodness):
     store[letters[i]] = j
 
 # set value, good list and shift to 0
-value = []
+values = []
 words_list = []
 shifts = 0
 
@@ -39,8 +39,41 @@ def decoder(txt: str, s: int = 1):
     return new_txt
 
 
+# def main(coded_text: str):
+#     return words_list[values.index(calculate_value([p for p in coded_text])]
+
+
+def main(coded_text: str) -> float:
+    global shifts, words_list
+    goodness_value, position = 0, 0
+    list_ = [p for p in coded_text]
+    for char in list_:
+        if position == len(list_)-1:
+            values.append(goodness_value)
+            words_list.append(''.join(list_))
+            shifts += 1
+            if shifts == 27:
+                return final_calc(words_list)
+            else:
+                main(decoder(''.join(list_)))
+        elif char == ' ':
+            position += 1
+            continue
+        else:
+            goodness_value += store[char]
+            position += 1
+
+
+def final_calc(words: list) -> float:
+    biggest_value, position = .0, 0
+    while position < len(words):
+        for value in values:
+            if float(value) > float(biggest_value):
+                biggest_value = float(value)
+                position += 1
+        return biggest_value
 
 
 if __name__ == '__main__':
-    decoder('LQKP')
+    print(main('DQLMW SQTTML BPM ZILQW ABIZ'))
     
