@@ -1,2 +1,2 @@
 txt = input()
-print(str[1:len(txt)-1])
+print(txt[1:len(txt)-1])
