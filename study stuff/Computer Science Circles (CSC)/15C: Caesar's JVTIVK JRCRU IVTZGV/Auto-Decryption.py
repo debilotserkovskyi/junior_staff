@@ -36,7 +36,7 @@ def decoder(txt: str, s: int = 1):
             position = letters.find(char)
             new_char = letters[(position + s) % 26]
             new_txt += new_char
-    return new_txt
+    return main(new_txt)
 
 
 # def main(coded_text: str):
@@ -49,13 +49,14 @@ def main(coded_text: str) -> float:
     list_ = [p for p in coded_text]
     for char in list_:
         if position == len(list_)-1:
+            goodness_value += store[char]
             values.append(goodness_value)
             words_list.append(''.join(list_))
             shifts += 1
             if shifts == 27:
-                return final_calc(words_list)
+                return words_list[values.index(final_calc(words_list))]
             else:
-                main(decoder(''.join(list_)))
+                return decoder(''.join(list_))
         elif char == ' ':
             position += 1
             continue
@@ -65,7 +66,7 @@ def main(coded_text: str) -> float:
 
 
 def final_calc(words: list) -> float:
-    biggest_value, position = .0, 0
+    biggest_value, position = 0.0, 0
     while position < len(words):
         for value in values:
             if float(value) > float(biggest_value):
@@ -75,5 +76,7 @@ def final_calc(words: list) -> float:
 
 
 if __name__ == '__main__':
-    print(main('DQLMW SQTTML BPM ZILQW ABIZ'))
+    print(main('JAZZ'))
+    print(values)
+    print(words_list)
     
