@@ -1,9 +1,9 @@
-def countdown(n):
+def countup(n):
   if n == 0:
     print('Blastoff!')
   else:
+    countup(n - 1)
     print(n)
-    countup(n + 1)
 
-def countup(d):
-  pass
+
+countup(4)
