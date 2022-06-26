@@ -1,17 +1,21 @@
 isPrime = [True] * 1000001
 
 
-def isItPrime(N):  # same as before
-    for D in range(2, N):
-        if (D * D > N):  # first added line
-            break  # second added line
-        if N % D == 0:
+def isPrime_(n):  # same as before
+    if n == 2 or n == 3:
+        return True
+    if n % 2 == 0 or n < 2:
+        return False
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
             return False
     return True
     
 
-for i in range(1000001):
-    if isItPrime(i):
-        isPrime[i] = False
-    
-print(isPrime)
+def isItPrime(n):
+    for i in range(0, len(n)):
+        if not isPrime_(i):
+            n[i] = False
+
+
+isItPrime(isPrime)
